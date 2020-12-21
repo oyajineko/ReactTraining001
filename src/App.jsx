@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ColorfulMessage from "./components/ColorfulMessage";
 
 const App = () => {
@@ -12,11 +12,16 @@ const App = () => {
     setfaceShowFlag(!faceShowFlag);
   };
 
-  if (num % 3 === 0) {
-    faceShowFlag || setfaceShowFlag(true);
-  } else {
-    faceShowFlag && setfaceShowFlag(false);
-  }
+  useEffect(() => {
+    if (num > 0) {
+      if (num % 3 === 0) {
+        faceShowFlag || setfaceShowFlag(true);
+      } else {
+        faceShowFlag && setfaceShowFlag(false);
+      }
+    }
+    // eslint-disable-next-line
+  }, [num]);
 
   return (
     <>
